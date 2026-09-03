@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Gamezop PostMessage Web Example</title>
+  <style>
+    :root { color-scheme: light dark; font-family: Inter, ui-sans-serif, system-ui, sans-serif; }
+    * { box-sizing: border-box; }
+    html, body { width: 100%; height: 100%; margin: 0; overflow: hidden; background: #f5f6fb; color: #171827; }
+    button, input { font: inherit; }
+    button { cursor: pointer; }
+    .hidden { display: none !important; }
+    #launcher { height: 100%; overflow: auto; padding: max(32px, env(safe-area-inset-top)) 24px max(32px, env(safe-area-inset-bottom)); }
+    .launcher-inner { width: min(680px, 100%); margin: auto; }
+    h1 { margin: 0 0 8px; font-size: clamp(30px, 5vw, 44px); }
+    .muted { color: #64687b; }
+    .tabs { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; margin: 28px 0 18px; padding: 4px; border-radius: 14px; background: #e4e6ef; }
+    .tab { border: 0; border-radius: 11px; padding: 11px; background: transparent; color: inherit; font-weight: 700; }
+    .tab.active { background: white; color: #4338ca; box-shadow: 0 2px 8px #1112; }
+    .card { padding: 22px; border-radius: 20px; background: white; box-shadow: 0 12px 36px #2221; }
+    label { display: block; margin-bottom: 8px; font-weight: 750; }
+    input { width: 100%; padding: 13px 14px; border: 1px solid #c7cad7; border-radius: 11px; background: transparent; color: inherit; }
+    input:focus { outline: 3px solid #6657f033; border-color: #5b4cf0; }
+    .error { min-height: 18px; margin: 7px 0; color: #b42318; font-size: 13px; }
+    .primary { width: 100%; border: 0; border-radius: 11px; padding: 13px; background: #5b4cf0; color: white; font-weight: 750; }
+    #game { position: fixed; inset: 0; padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left); background: #090b12; }
+    .chrome { height: 58px; display: flex; align-items: center; gap: 12px; padding: 7px 10px; background: #fff; color: #181925; box-shadow: 0 2px 8px #0002; position: relative; z-index: 5; }
+    .icon { width: 42px; height: 42px; border: 0; border-radius: 50%; background: transparent; color: inherit; font-size: 24px; }
+    .icon:hover { background: #1111; }
+    .chrome-title { min-width: 0; flex: 1; }
+    .chrome-title strong, .chrome-title small { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .chrome-title small { color: #666b7c; }
+    #frame-area { position: absolute; top: calc(env(safe-area-inset-top) + 58px); right: env(safe-area-inset-right); bottom: env(safe-area-inset-bottom); left: env(safe-area-inset-left); overflow: hidden; }
+    iframe { width: 100%; height: 100%; display: block; border: 0; background: white; }
+    #logs-pill { position: absolute; z-index: 9; width: 94px; height: 48px; border: 1px solid #67e8f955; border-radius: 25px; background: #111a2eee; color: #67e8f9; box-shadow: 0 8px 22px #0008; font-weight: 800; touch-action: none; user-select: none; }
+    #logs-pill span { margin-left: 7px; padding: 3px 7px; border-radius: 999px; background: #263451; color: #bfdbfe; font-size: 11px; }
+    #inspector { position: absolute; z-index: 8; left: 8px; right: 8px; bottom: 8px; height: clamp(180px, 44%, 320px); display: flex; flex-direction: column; overflow: hidden; border: 1px solid #2a3856; border-radius: 18px; background: #0b1120f5; color: #e2e8f0; box-shadow: 0 12px 32px #000a; backdrop-filter: blur(10px); }
+    .log-head { min-height: 60px; display: flex; align-items: center; gap: 10px; padding: 10px 14px; background: #111a2e; border-bottom: 1px solid #263451; }
+    .dot { width: 10px; height: 10px; border-radius: 50%; background: #64748b; }
+    .dot.live { background: #22c55e; }
+    .log-title { flex: 1; }
+    .log-title strong, .log-title small { display: block; }
+    .log-title small { color: #94a3b8; }
+    .clear { border: 1px solid #67e8f966; border-radius: 8px; padding: 7px 10px; background: transparent; color: #67e8f9; }
+    .log-body { min-height: 0; flex: 1; display: grid; grid-template-columns: minmax(120px, 36%) 1fr; }
+    #timeline { min-height: 0; overflow: auto; padding: 9px; border-right: 1px solid #263451; }
+    .event { width: 100%; margin-bottom: 7px; padding: 8px; border: 1px solid transparent; border-radius: 9px; background: #151f34; color: #e2e8f0; text-align: left; }
+    .event.selected { border-color: currentColor; }
+    .event strong, .event small { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .event small { color: #94a3b8; }
+    .individual { color: #2dd4bf; } .battles { color: #c084fc; } .unknown { color: #fbbf24; } .malformed { color: #fb7185; }
+    #details { min-width: 0; overflow: auto; padding: 11px; }
+    .details-head { display: flex; gap: 8px; align-items: center; }
+    .details-head div { flex: 1; min-width: 0; }
+    .copy { border: 0; border-radius: 7px; padding: 7px 9px; background: #263451; color: #bfdbfe; }
+    .field { margin: 10px 0; }
+    .field b { display: block; color: #94a3b8; font-size: 11px; }
+    pre { white-space: pre-wrap; overflow-wrap: anywhere; padding: 10px; border-radius: 9px; background: #151f34; color: #dbeafe; font: 11px/1.45 ui-monospace, SFMono-Regular, monospace; }
+    .empty { display: grid; place-items: center; height: 100%; padding: 20px; color: #94a3b8; text-align: center; }
+    @media (max-width: 520px) { .log-body { grid-template-columns: 132px 1fr; } .card { padding: 18px; } }
+    @media (prefers-color-scheme: dark) { body { background: #0b1020; color: #eef0ff; } .card, .tab.active, .chrome { background: #151a2b; } .tabs { background: #252b3e; } input { border-color: #41485d; } .muted { color: #a8adbf; } .chrome { color: #eef0ff; } }
+  </style>
+</head>
+<body>
+  <main id="launcher">
+    <div class="launcher-inner">
+      <h1>Gamezop Event Bridge</h1>
+      <p class="muted">Open a real Gamezop URL in an iframe and inspect verified postMessage events.</p>
+      <div class="tabs" role="tablist">
+        <button id="individual-tab" class="tab active" type="button" role="tab">Individual</button>
+        <button id="battles-tab" class="tab" type="button" role="tab">Battles</button>
+      </div>
+      <section class="card">
+        <h2 id="mode-title">Individual game URL</h2>
+        <p id="mode-help" class="muted">Paste a Gamezop game URL or Unique Link.</p>
+        <label for="url-input">HTTPS URL</label>
+        <input id="url-input" type="url" inputmode="url" autocomplete="off" placeholder="https://…">
+        <div id="validation" class="error" role="alert"></div>
+        <button id="launch" class="primary" type="button">Launch Individual</button>
+      </section>
+      <p class="muted"><small>Events remain in memory for this page session only.</small></p>
+      <p class="muted"><small>The target may refuse iframe embedding through CSP <code>frame-ancestors</code> or <code>X-Frame-Options</code>. The parent page cannot bypass those response headers.</small></p>
+    </div>
+  </main>
+
+  <main id="game" class="hidden">
+    <header class="chrome">
+      <button id="close" class="icon" type="button" aria-label="Close iframe">×</button>
+      <div class="chrome-title"><strong id="game-title">Individual iframe</strong><small id="status">Loading…</small></div>
+      <button id="reload" class="icon" type="button" aria-label="Reload iframe">↻</button>
+    </header>
+    <section id="frame-area">
+      <iframe id="game-frame" title="Gamezop game" allow="autoplay; fullscreen; gamepad" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+      <button id="logs-pill" type="button">Logs <span id="pill-count">0</span></button>
+      <aside id="inspector" class="hidden" aria-label="Event logs">
+        <div class="log-head">
+          <span id="live-dot" class="dot"></span>
+          <div class="log-title"><strong>Event logs</strong><small id="event-count">0 captured events</small></div>
+          <button id="clear" class="clear" type="button" disabled>Clear</button>
+        </div>
+        <div class="log-body"><div id="timeline"></div><div id="details"></div></div>
+      </aside>
+    </section>
+  </main>
+
+  <script>
+    (() => {
+      'use strict';
+      const knownIndividual = new Set(['loaded', 'start', 'playing', 'over', 'levelup']);
+      const knownBattles = new Set(['match_found', 'match_not_found', 'match_start', 'match_playing', 'match_over', 'match_result', 'go_home']);
+      const state = { mode: 'individual', urls: { individual: '', battles: '' }, activeURL: null, origin: null, events: [], selected: null, nextId: 1, dropped: 0 };
+      const $ = id => document.getElementById(id);
+      const launcher = $('launcher'), game = $('game'), input = $('url-input'), frame = $('game-frame');
+
+      function setMode(mode) {
+        state.urls[state.mode] = input.value;
+        state.mode = mode;
+        input.value = state.urls[mode];
+        $('individual-tab').classList.toggle('active', mode === 'individual');
+        $('battles-tab').classList.toggle('active', mode === 'battles');
+        $('mode-title').textContent = mode === 'individual' ? 'Individual game URL' : 'Final Battles URL';
+        $('mode-help').textContent = mode === 'individual' ? 'Paste a Gamezop game URL or Unique Link.' : 'Paste a final URL containing Base64-encoded roomDetails.';
+        $('launch').textContent = `Launch ${mode[0].toUpperCase()}${mode.slice(1)}`;
+        $('validation').textContent = '';
+      }
+
+      function validate(value, mode) {
+        if (!value.trim()) return 'Enter a Gamezop HTTPS URL';
+        let url;
+        try { url = new URL(value.trim()); } catch { return 'Enter a valid HTTPS URL'; }
+        if (url.protocol !== 'https:') return 'Only HTTPS URLs are accepted';
+        if (!url.hostname) return 'The URL must include a host';
+        if (url.username || url.password) return 'URLs containing embedded credentials are not accepted';
+        if (mode !== 'battles') return null;
+        const values = url.searchParams.getAll('roomDetails');
+        if (!values.length) return 'Battles URL must include roomDetails';
+        if (values.length > 1) return 'Battles URL must include roomDetails only once';
+        if (!values[0]) return 'roomDetails cannot be empty';
+        try {
+          let encoded = values[0].replace(/-/g, '+').replace(/_/g, '/');
+          encoded += '='.repeat((4 - encoded.length % 4) % 4);
+          if (!/^[A-Za-z0-9+/]*={0,2}$/.test(encoded)) throw new Error('base64');
+          const binary = atob(encoded);
+          const bytes = Uint8Array.from(binary, character => character.charCodeAt(0));
+          const decoded = new TextDecoder('utf-8', { fatal: true }).decode(bytes);
+          const object = JSON.parse(decoded);
+          if (!object || Array.isArray(object) || typeof object !== 'object' || !Object.keys(object).length) return 'Decoded roomDetails must be a non-empty JSON object';
+        } catch { return 'roomDetails must be valid Base64 JSON'; }
+        return null;
+      }
+
+      function launchURL(value, mode, updateQuery = true) {
+        const error = validate(value, mode);
+        if (error) { $('validation').textContent = error; return; }
+        const url = new URL(value.trim());
+        state.mode = mode; state.urls[mode] = url.href; state.activeURL = url; state.origin = url.origin;
+        $('game-title').textContent = `${mode[0].toUpperCase()}${mode.slice(1)} iframe`;
+        $('status').textContent = 'Loading…';
+        frame.src = url.href;
+        launcher.classList.add('hidden'); game.classList.remove('hidden');
+        if (updateQuery) history.replaceState(null, '', `?mode=${encodeURIComponent(mode)}&url=${encodeURIComponent(url.href)}`);
+      }
+
+      function closeGame() {
+        frame.src = 'about:blank'; state.activeURL = null; state.origin = null;
+        game.classList.add('hidden'); launcher.classList.remove('hidden');
+        history.replaceState(null, '', location.pathname);
+      }
+
+      function parsePayload(body) {
+        const raw = typeof body === 'string' ? body : JSON.stringify(body);
+        try {
+          const payload = typeof body === 'string' ? JSON.parse(body) : body;
+          if (!payload || Array.isArray(payload) || typeof payload !== 'object') throw new Error('Payload is not a JSON object');
+          let family = 'unknown', name = 'unknown_payload', status = 'unknown';
+          if (typeof payload.state === 'string') { family = 'individual'; name = payload.state; status = knownIndividual.has(name) ? 'valid' : 'unknown'; }
+          else if (typeof payload.event === 'string') { family = 'battles'; name = payload.event; status = knownBattles.has(name) ? 'valid' : 'unknown'; }
+          return { raw, pretty: JSON.stringify(payload, null, 2), payload, family, name, status };
+        } catch (error) {
+          return { raw: String(raw), pretty: String(raw), payload: { error: error.message }, family: 'unknown', name: 'malformed_json', status: 'malformed' };
+        }
+      }
+
+      function capture(body) {
+        const parsed = parsePayload(body);
+        const event = { id: state.nextId++, receivedAt: new Date(), ...parsed };
+        state.events.push(event);
+        if (state.events.length > 500) { const excess = state.events.length - 500; state.events.splice(0, excess); state.dropped += excess; }
+        state.selected = event.id;
+        renderLogs();
+      }
+
+      function eventClass(event) { return event.status === 'malformed' ? 'malformed' : event.status === 'unknown' ? 'unknown' : event.family; }
+      function renderLogs() {
+        const count = state.events.length;
+        $('pill-count').textContent = count; $('event-count').textContent = `${count} captured event${count === 1 ? '' : 's'}${state.dropped ? ` · ${state.dropped} discarded` : ''}`;
+        $('live-dot').classList.toggle('live', count > 0); $('clear').disabled = count === 0;
+        const timeline = $('timeline'); timeline.replaceChildren();
+        [...state.events].reverse().forEach(event => {
+          const button = document.createElement('button');
+          button.type = 'button'; button.className = `event ${eventClass(event)}${event.id === state.selected ? ' selected' : ''}`;
+          const strong = document.createElement('strong'); strong.textContent = event.name;
+          const small = document.createElement('small'); small.textContent = `${event.family} · ${event.receivedAt.toLocaleTimeString()}`;
+          button.append(strong, small); button.onclick = () => { state.selected = event.id; renderLogs(); };
+          timeline.append(button);
+        });
+        renderDetails();
+      }
+
+      function renderDetails() {
+        const root = $('details'); root.replaceChildren();
+        const event = state.events.find(item => item.id === state.selected) || state.events.at(-1);
+        if (!event) { const empty = document.createElement('div'); empty.className = 'empty'; empty.textContent = 'Waiting for verified iframe events…'; root.append(empty); return; }
+        const head = document.createElement('div'); head.className = 'details-head';
+        const title = document.createElement('div'); title.innerHTML = `<strong></strong><small class="${eventClass(event)}"></small>`;
+        title.querySelector('strong').textContent = event.name; title.querySelector('small').textContent = event.status;
+        const copy = document.createElement('button'); copy.className = 'copy'; copy.type = 'button'; copy.textContent = 'Copy JSON'; copy.onclick = () => copyText(event.raw);
+        head.append(title, copy); root.append(head);
+        Object.keys(event.payload).sort().forEach(key => {
+          const row = document.createElement('div'); row.className = 'field';
+          const label = document.createElement('b'); label.textContent = key;
+          const value = document.createElement('span'); value.textContent = typeof event.payload[key] === 'object' ? JSON.stringify(event.payload[key], null, 2) : String(event.payload[key]);
+          row.append(label, value); root.append(row);
+        });
+        const label = document.createElement('b'); label.textContent = 'Raw JSON';
+        const pre = document.createElement('pre'); pre.textContent = event.pretty;
+        root.append(label, pre);
+      }
+
+      async function copyText(text) {
+        try { await navigator.clipboard.writeText(text); }
+        catch { const area = document.createElement('textarea'); area.value = text; document.body.append(area); area.select(); document.execCommand('copy'); area.remove(); }
+      }
+
+      window.addEventListener('message', event => {
+        if (!state.activeURL || event.source !== frame.contentWindow || event.origin !== state.origin) return;
+        capture(event.data);
+      });
+
+      frame.addEventListener('load', () => { if (state.activeURL) $('status').textContent = `Listening to ${state.origin}`; });
+      $('individual-tab').onclick = () => setMode('individual'); $('battles-tab').onclick = () => setMode('battles');
+      input.oninput = () => { state.urls[state.mode] = input.value; $('validation').textContent = ''; };
+      $('launch').onclick = () => launchURL(input.value, state.mode);
+      input.onkeydown = event => { if (event.key === 'Enter') launchURL(input.value, state.mode); };
+      $('close').onclick = closeGame; $('reload').onclick = () => { if (state.activeURL) { $('status').textContent = 'Loading…'; frame.src = state.activeURL.href; } };
+      $('clear').onclick = () => { state.events = []; state.selected = null; state.dropped = 0; renderLogs(); };
+      const pill = $('logs-pill'); let dragging = false, moved = false, deltaX = 0, deltaY = 0;
+      pill.onclick = () => { if (moved) { moved = false; return; } $('inspector').classList.toggle('hidden'); };
+      function placePill(x, y) {
+        const area = $('frame-area').getBoundingClientRect();
+        pill.style.left = `${Math.min(Math.max(0, x), area.width - pill.offsetWidth)}px`;
+        pill.style.top = `${Math.min(Math.max(0, y), area.height - pill.offsetHeight)}px`;
+        pill.style.right = 'auto';
+      }
+      pill.addEventListener('pointerdown', event => { dragging = true; moved = false; const rect = pill.getBoundingClientRect(); deltaX = event.clientX - rect.left; deltaY = event.clientY - rect.top; pill.setPointerCapture(event.pointerId); });
+      pill.addEventListener('pointermove', event => { if (!dragging) return; moved = true; const area = $('frame-area').getBoundingClientRect(); placePill(event.clientX - area.left - deltaX, event.clientY - area.top - deltaY); });
+      pill.addEventListener('pointerup', event => { dragging = false; pill.releasePointerCapture(event.pointerId); if (moved) event.preventDefault(); });
+      pill.style.right = '12px'; pill.style.top = '12px';
+
+      const query = new URLSearchParams(location.search); const queryMode = query.get('mode') === 'battles' ? 'battles' : 'individual'; const queryURL = query.get('url');
+      setMode(queryMode); renderLogs();
+      if (queryURL) { state.urls[queryMode] = queryURL; input.value = queryURL; launchURL(queryURL, queryMode, false); }
+    })();
+  </script>
+</body>
+</html>

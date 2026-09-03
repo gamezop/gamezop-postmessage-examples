@@ -1,0 +1,49 @@
+name: GamezopPostMessage
+options:
+  bundleIdPrefix: com.gamezop.postmessageexample
+  deploymentTarget:
+    iOS: "15.0"
+settings:
+  base:
+    SWIFT_VERSION: "6.0"
+    DEVELOPMENT_TEAM: ""
+targets:
+  GamezopPostMessage:
+    type: application
+    platform: iOS
+    sources: [GamezopPostMessage]
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.gamezop.postmessageexample.ios
+        PRODUCT_NAME: GamezopPostMessage
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_CFBundleDisplayName: Gamezop PostMessage
+        INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents: YES
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone: UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad: UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight
+    scheme:
+      testTargets:
+        - GamezopPostMessageTests
+        - GamezopPostMessageUITests
+  GamezopPostMessageTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources: [GamezopPostMessageTests]
+    dependencies:
+      - target: GamezopPostMessage
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.gamezop.postmessageexample.ios.tests
+        GENERATE_INFOPLIST_FILE: YES
+  GamezopPostMessageUITests:
+    type: bundle.ui-testing
+    platform: iOS
+    sources: [GamezopPostMessageUITests]
+    dependencies:
+      - target: GamezopPostMessage
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.gamezop.postmessageexample.ios.uitests
+        GENERATE_INFOPLIST_FILE: YES
+        TEST_TARGET_NAME: GamezopPostMessage

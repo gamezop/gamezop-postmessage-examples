@@ -1,0 +1,520 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2F5FE00B183A55047EB83E29 /* LauncherUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9B6B0D7305D6DD6D5E71BF /* LauncherUITests.swift */; };
+		441919136460A4E717AEC318 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6157FC52747D2A329256FD3 /* ContentView.swift */; };
+		44311D23886A9C853B3BE1A0 /* EventStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62601E3650067ACEBEDCD5A2 /* EventStore.swift */; };
+		6908C1D980546FD64BEE3EF9 /* GamezopPostMessageApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56646E06FBEC25E9499C1C8E /* GamezopPostMessageApp.swift */; };
+		8D05373216231AE5F722E166 /* GameWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC1835276591877B49FDE80 /* GameWebView.swift */; };
+		9A703C115F58A7E1D7295105 /* URLPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F194B27693D68B43E156932C /* URLPolicy.swift */; };
+		ABC753F5250271AD68DBFB79 /* GameEventTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72166261360B26AE5BFC365 /* GameEventTests.swift */; };
+		BB768542F8BBA6A54696A48D /* GameEventModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EDBF0E83BF47D2F14BE7E2 /* GameEventModels.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4F8C7C16A79D512CCCE5A6DA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CE5CFF7581417304FAA77A71 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 40E3E506D843A32C5195749B;
+			remoteInfo = GamezopPostMessage;
+		};
+		97760441DFF0C297A45439A7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CE5CFF7581417304FAA77A71 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 40E3E506D843A32C5195749B;
+			remoteInfo = GamezopPostMessage;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0CC1835276591877B49FDE80 /* GameWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameWebView.swift; sourceTree = "<group>"; };
+		56646E06FBEC25E9499C1C8E /* GamezopPostMessageApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamezopPostMessageApp.swift; sourceTree = "<group>"; };
+		62601E3650067ACEBEDCD5A2 /* EventStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventStore.swift; sourceTree = "<group>"; };
+		924C353BC0FDE8468687F675 /* GamezopPostMessageTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = GamezopPostMessageTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A3EDBF0E83BF47D2F14BE7E2 /* GameEventModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameEventModels.swift; sourceTree = "<group>"; };
+		B72166261360B26AE5BFC365 /* GameEventTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameEventTests.swift; sourceTree = "<group>"; };
+		C1346ADC47911788DB333407 /* GamezopPostMessage.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = GamezopPostMessage.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C6157FC52747D2A329256FD3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		DFB377D421F6AD11A9A55C4E /* GamezopPostMessageUITests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = GamezopPostMessageUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		ED9B6B0D7305D6DD6D5E71BF /* LauncherUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LauncherUITests.swift; sourceTree = "<group>"; };
+		F194B27693D68B43E156932C /* URLPolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLPolicy.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		0E730734B0BFEEC8D1CC4B81 /* GamezopPostMessage */ = {
+			isa = PBXGroup;
+			children = (
+				C6157FC52747D2A329256FD3 /* ContentView.swift */,
+				62601E3650067ACEBEDCD5A2 /* EventStore.swift */,
+				A3EDBF0E83BF47D2F14BE7E2 /* GameEventModels.swift */,
+				0CC1835276591877B49FDE80 /* GameWebView.swift */,
+				56646E06FBEC25E9499C1C8E /* GamezopPostMessageApp.swift */,
+				F194B27693D68B43E156932C /* URLPolicy.swift */,
+			);
+			path = GamezopPostMessage;
+			sourceTree = "<group>";
+		};
+		16F84BFCA5D8539164780A6A = {
+			isa = PBXGroup;
+			children = (
+				0E730734B0BFEEC8D1CC4B81 /* GamezopPostMessage */,
+				69253DAD40450E919184FF2D /* GamezopPostMessageTests */,
+				21640E5C00F5D7533A0379B7 /* GamezopPostMessageUITests */,
+				DA668C3D5E6374A5839E81B9 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		21640E5C00F5D7533A0379B7 /* GamezopPostMessageUITests */ = {
+			isa = PBXGroup;
+			children = (
+				ED9B6B0D7305D6DD6D5E71BF /* LauncherUITests.swift */,
+			);
+			path = GamezopPostMessageUITests;
+			sourceTree = "<group>";
+		};
+		69253DAD40450E919184FF2D /* GamezopPostMessageTests */ = {
+			isa = PBXGroup;
+			children = (
+				B72166261360B26AE5BFC365 /* GameEventTests.swift */,
+			);
+			path = GamezopPostMessageTests;
+			sourceTree = "<group>";
+		};
+		DA668C3D5E6374A5839E81B9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C1346ADC47911788DB333407 /* GamezopPostMessage.app */,
+				924C353BC0FDE8468687F675 /* GamezopPostMessageTests.xctest */,
+				DFB377D421F6AD11A9A55C4E /* GamezopPostMessageUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		40E3E506D843A32C5195749B /* GamezopPostMessage */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DB00B5F5C7C1918379C5EF14 /* Build configuration list for PBXNativeTarget "GamezopPostMessage" */;
+			buildPhases = (
+				973FD028E3F8377F2D8408C9 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GamezopPostMessage;
+			packageProductDependencies = (
+			);
+			productName = GamezopPostMessage;
+			productReference = C1346ADC47911788DB333407 /* GamezopPostMessage.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D1E1741A56A64E2D4F5679FD /* GamezopPostMessageTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 99E68BADEC4734EFC0249F0E /* Build configuration list for PBXNativeTarget "GamezopPostMessageTests" */;
+			buildPhases = (
+				1B772092DFF7604314920A1D /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0AC35A6470ADFA4D0344C4AD /* PBXTargetDependency */,
+			);
+			name = GamezopPostMessageTests;
+			packageProductDependencies = (
+			);
+			productName = GamezopPostMessageTests;
+			productReference = 924C353BC0FDE8468687F675 /* GamezopPostMessageTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		D57D92ABFC46F3D387886282 /* GamezopPostMessageUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4F979AD752AE56FC43D1BDB1 /* Build configuration list for PBXNativeTarget "GamezopPostMessageUITests" */;
+			buildPhases = (
+				B185DF91537821314E2ECB4A /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C919B6667A3CD39FFF45BBBE /* PBXTargetDependency */,
+			);
+			name = GamezopPostMessageUITests;
+			packageProductDependencies = (
+			);
+			productName = GamezopPostMessageUITests;
+			productReference = DFB377D421F6AD11A9A55C4E /* GamezopPostMessageUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CE5CFF7581417304FAA77A71 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					40E3E506D843A32C5195749B = {
+						DevelopmentTeam = "";
+					};
+					D1E1741A56A64E2D4F5679FD = {
+						DevelopmentTeam = "";
+					};
+					D57D92ABFC46F3D387886282 = {
+						DevelopmentTeam = "";
+						TestTargetID = 40E3E506D843A32C5195749B;
+					};
+				};
+			};
+			buildConfigurationList = E71F3BD2646EABE55B055126 /* Build configuration list for PBXProject "GamezopPostMessage" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 16F84BFCA5D8539164780A6A;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = DA668C3D5E6374A5839E81B9 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				40E3E506D843A32C5195749B /* GamezopPostMessage */,
+				D1E1741A56A64E2D4F5679FD /* GamezopPostMessageTests */,
+				D57D92ABFC46F3D387886282 /* GamezopPostMessageUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1B772092DFF7604314920A1D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ABC753F5250271AD68DBFB79 /* GameEventTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		973FD028E3F8377F2D8408C9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				441919136460A4E717AEC318 /* ContentView.swift in Sources */,
+				44311D23886A9C853B3BE1A0 /* EventStore.swift in Sources */,
+				BB768542F8BBA6A54696A48D /* GameEventModels.swift in Sources */,
+				8D05373216231AE5F722E166 /* GameWebView.swift in Sources */,
+				6908C1D980546FD64BEE3EF9 /* GamezopPostMessageApp.swift in Sources */,
+				9A703C115F58A7E1D7295105 /* URLPolicy.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B185DF91537821314E2ECB4A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2F5FE00B183A55047EB83E29 /* LauncherUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0AC35A6470ADFA4D0344C4AD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 40E3E506D843A32C5195749B /* GamezopPostMessage */;
+			targetProxy = 4F8C7C16A79D512CCCE5A6DA /* PBXContainerItemProxy */;
+		};
+		C919B6667A3CD39FFF45BBBE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 40E3E506D843A32C5195749B /* GamezopPostMessage */;
+			targetProxy = 97760441DFF0C297A45439A7 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		124C8BF2BAEED9E167F52B4A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.gamezop.postmessageexample.ios.tests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GamezopPostMessage.app/GamezopPostMessage";
+			};
+			name = Release;
+		};
+		3D8CE01D3FB06C47F1A79EEF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 6.0;
+			};
+			name = Debug;
+		};
+		3F7BB6D5B3C03311DB04E2E8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.gamezop.postmessageexample.ios.uitests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = GamezopPostMessage;
+			};
+			name = Debug;
+		};
+		553B4C69D011AF5EF3284D5B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Gamezop PostMessage";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.gamezop.postmessageexample.ios;
+				PRODUCT_NAME = GamezopPostMessage;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		75DB0B802B852ADB0D2102C6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.gamezop.postmessageexample.ios.tests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GamezopPostMessage.app/GamezopPostMessage";
+			};
+			name = Debug;
+		};
+		776CF4B97C14F2168FAC7045 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.gamezop.postmessageexample.ios.uitests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = GamezopPostMessage;
+			};
+			name = Release;
+		};
+		8CAD65D6D8B5B20116D99C77 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Gamezop PostMessage";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.gamezop.postmessageexample.ios;
+				PRODUCT_NAME = GamezopPostMessage;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		F536A4391AA75FAE11B35F3A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = "";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 6.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4F979AD752AE56FC43D1BDB1 /* Build configuration list for PBXNativeTarget "GamezopPostMessageUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3F7BB6D5B3C03311DB04E2E8 /* Debug */,
+				776CF4B97C14F2168FAC7045 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		99E68BADEC4734EFC0249F0E /* Build configuration list for PBXNativeTarget "GamezopPostMessageTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				75DB0B802B852ADB0D2102C6 /* Debug */,
+				124C8BF2BAEED9E167F52B4A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		DB00B5F5C7C1918379C5EF14 /* Build configuration list for PBXNativeTarget "GamezopPostMessage" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				553B4C69D011AF5EF3284D5B /* Debug */,
+				8CAD65D6D8B5B20116D99C77 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		E71F3BD2646EABE55B055126 /* Build configuration list for PBXProject "GamezopPostMessage" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3D8CE01D3FB06C47F1A79EEF /* Debug */,
+				F536A4391AA75FAE11B35F3A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CE5CFF7581417304FAA77A71 /* Project object */;
+}
